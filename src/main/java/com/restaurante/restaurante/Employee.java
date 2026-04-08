@@ -18,5 +18,8 @@ public class Employee {
     private  String FirstName;
     private  String LastName;
 
+    private  Integer age;
+
+
     //TODO [Reverse Engineering] generate columns from DB
 }
