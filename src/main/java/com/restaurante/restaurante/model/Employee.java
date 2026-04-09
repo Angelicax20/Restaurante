@@ -1,4 +1,4 @@
-package com.restaurante.restaurante;
+package com.restaurante.restaurante.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

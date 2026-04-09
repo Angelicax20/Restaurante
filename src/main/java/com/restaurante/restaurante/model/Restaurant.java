@@ -1,8 +1,8 @@
-package com.restaurante.restaurante;
+package com.restaurante.restaurante.model;
 
 import jakarta.persistence.*;
 //persistence = BASE DE DATOS
-import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "restaurants") //nombre de la tabla en la base de datos
