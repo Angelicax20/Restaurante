@@ -7,6 +7,8 @@ import com.restaurante.repository.RestaurantRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.List;
+
 @SpringBootApplication
 public class RestauranteApplication {
 
@@ -25,7 +27,7 @@ public class RestauranteApplication {
 //        pacoBar.setPrice(25.50);
 //        pacoBar.setNumberEmployees(10);
 
-         Restaurant bar2 = new Restaurant("nombre2","direccion 2", 10,22.1); //meter objeto a base de dato
+        Restaurant bar2 = new Restaurant("nombre2","direccion 2", 10,22.1); //meter objeto a base de dato
 
         Restaurant bar3 = new Restaurant();
 
@@ -40,6 +42,16 @@ public class RestauranteApplication {
 
         Employee empleado2 = new Employee();
         employeeRepository.save(empleado2);
+
+
+        //restaurantRepository.findAll().forEach(System.out::println);
+        // var restaurantes = restaurantRepository.findAll();
+        //RECUPERAR DATOD DE LA BASE DE DATOS Y MOSTRARLOS POR CONSOLA
+        List<Restaurant> restaurantes = restaurantRepository.findAll();
+        List<Employee> empleados = employeeRepository.findAll();
+
+        System.out.println(restaurantRepository.findAll());
+        System.out.println(employeeRepository.findAll());
     }
 
 }

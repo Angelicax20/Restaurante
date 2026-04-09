@@ -82,6 +82,16 @@ public class Restaurant {
 //constructor vacio
     public Restaurant() {
     }
-
-
+// para mostrar por consola lo que continen las listas
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", active=" + active +
+                ", numberEmployees=" + numberEmployees +
+                ", price=" + price +
+                '}';
+    }
 }
