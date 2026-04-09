@@ -20,19 +20,26 @@ public class RestauranteApplication {
         //guardar el restaurante en base de dato usando el repositorio : save()
 
         Restaurant pacoBar = new Restaurant("nombre1","direccion",23,23.54); //meter objeto a base de dato
-//          pacoBar.setName("Paco Bar");
+//        pacoBar.setName("Paco Bar");
 //        pacoBar.setAddress("Calle 123");
 //        pacoBar.setPrice(25.50);
 //        pacoBar.setNumberEmployees(10);
 
-        //Restaurant bar2 = new Restaurant(); //meter objeto a base de dato
-        //bar2.setName("BAR 2");
+         Restaurant bar2 = new Restaurant("nombre2","direccion 2", 10,22.1); //meter objeto a base de dato
+
+        Restaurant bar3 = new Restaurant();
 
         restaurantRepository.save(pacoBar);//para guardar o insertar en la BD
-        //estaurantRepository.save(bar2);//para guardar o insertar en la BD
+        restaurantRepository.save(bar2);//para guardar o insertar en la BD
+        restaurantRepository.save(bar3);//para guardar o insertar en la BD
 
-        Employee bar = new Employee();
-        employeeRepository.save(bar);
+
+        Employee empleado1 = new Employee("angelica","giraldo",26);
+        employeeRepository.save(empleado1);
+        System.out.println(empleado1);
+
+        Employee empleado2 = new Employee();
+        employeeRepository.save(empleado2);
     }
 
 }

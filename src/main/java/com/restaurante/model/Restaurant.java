@@ -79,4 +79,9 @@ public class Restaurant {
         this.numberEmployees = numberEmployees;
         this.price = price;
     }
+//constructor vacio
+    public Restaurant() {
+    }
+
+
 }
