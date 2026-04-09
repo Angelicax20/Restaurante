@@ -1,4 +1,4 @@
-package com.restaurante.restaurante.model;
+package com.restaurante.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -17,7 +17,6 @@ public class Employee {
     private  String dni;
     private  String FirstName;
     private  String LastName;
-
     private  Integer age;
 
 
