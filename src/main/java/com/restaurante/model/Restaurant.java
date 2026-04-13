@@ -35,7 +35,20 @@ public class Restaurant {
     // tipo de comida, etc
 
 
+    @Enumerated(EnumType.STRING)
+    //@Column(name = "food_type") PARA CAMBIAR EL NOMBRRE DE LA TABLA
+    private FoodType foodType = FoodType.COLOMBIAN;
+
+
     //GETTERS Y SETTERS
+    public FoodType getFoodType() {
+        return foodType;
+    }
+
+    public void setFoodType(FoodType foodType) {
+        this.foodType = foodType;
+    }
+
     public Long getId() {
         return id;
     }
@@ -108,6 +121,7 @@ public class Restaurant {
                 ", numberEmployees=" + numberEmployees +
                 ", price=" + price +
                 ", startDate=" + startDate +
+                ", foodType=" + foodType +
                 '}';
     }
 }
