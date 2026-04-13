@@ -1,6 +1,10 @@
 package com.restaurante.model;
-
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDate;
+
 //persistence = BASE DE DATOS
 
 
@@ -15,12 +19,21 @@ public class Restaurant {
     @Column(unique = true) //atributo unico
     private  String name;
 
-    private String address;
+  //  private String address;
 
     @Column(columnDefinition = "BOOLEAN DEFAULT true") //para texto largo ,
     private  Boolean active=true;
     private  Integer numberEmployees;
     private Double price;
+
+    //fecha de apertura, fecha de cierre.(FECHA DE INICIO)
+    @CreatedDate
+    @CreationTimestamp
+    private LocalDate startDate = LocalDate.now(); // LocalDate.Now(); valor por la fecha actual
+
+    // horario de apertura y cierre.
+    // tipo de comida, etc
+
 
     //GETTERS Y SETTERS
     public Long getId() {
@@ -31,20 +44,13 @@ public class Restaurant {
         this.id = id;
     }
 
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public Boolean getActive() {
@@ -55,6 +61,7 @@ public class Restaurant {
         this.active = active;
     }
 
+
     public Integer getNumberEmployees() {
         return numberEmployees;
     }
@@ -62,6 +69,7 @@ public class Restaurant {
     public void setNumberEmployees(Integer numberEmployees) {
         this.numberEmployees = numberEmployees;
     }
+
 
     public Double getPrice() {
         return price;
@@ -71,10 +79,18 @@ public class Restaurant {
         this.price = price;
     }
 
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
     //constructor
     public Restaurant(String name, Double price, Integer numberEmployees) {
         this.name = name;
-        this.address = address;
         //this.active = active;
         this.numberEmployees = numberEmployees;
         this.price = price;
@@ -88,10 +104,10 @@ public class Restaurant {
         return "Restaurant{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
                 ", active=" + active +
                 ", numberEmployees=" + numberEmployees +
                 ", price=" + price +
+                ", startDate=" + startDate +
                 '}';
     }
 }
