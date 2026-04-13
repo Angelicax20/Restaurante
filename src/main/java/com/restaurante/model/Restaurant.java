@@ -72,7 +72,7 @@ public class Restaurant {
     }
 
     //constructor
-    public Restaurant(String name, String address, Integer numberEmployees, Double price) {
+    public Restaurant(String name, Double price, Integer numberEmployees) {
         this.name = name;
         this.address = address;
         //this.active = active;
