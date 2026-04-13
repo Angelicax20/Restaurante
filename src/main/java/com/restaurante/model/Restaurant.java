@@ -32,9 +32,9 @@ public class Restaurant {
     private LocalDate startDate = LocalDate.now(); // LocalDate.Now(); valor por la fecha actual
 
     // horario de apertura y cierre.
+
+
     // tipo de comida, etc
-
-
     @Enumerated(EnumType.STRING)
     //@Column(name = "food_type") PARA CAMBIAR EL NOMBRRE DE LA TABLA
     private FoodType foodType = FoodType.COLOMBIAN;
