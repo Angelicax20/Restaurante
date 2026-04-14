@@ -157,7 +157,7 @@ public class RestauranteApplication {
         //MANY TO ONE - ASOCIAR 1 RESTAURANTE A DOS EMPLEADOS
         //crear restaurante
         Restaurant restaurantColombiano = new Restaurant();
-        restaurantColombiano.setName("Restaurante Colombiano");
+        restaurantColombiano.setName("restaurantColombiano");
         restaurantColombiano.setFoodType(FoodType.COLOMBIAN);
         restaurantRepository.save(restaurantColombiano);
 
@@ -166,7 +166,7 @@ public class RestauranteApplication {
         Employee nuevoEmpleado = new Employee();
         nuevoEmpleado.setRestaurant(restaurantColombiano); // Asociar el empleado al restaurante colombiano
         nuevoEmpleado.setFirstName("Juan");
-        nuevoEmpleado.setLastName("Perez");
+        nuevoEmpleado.setLastName("GOMEZ");
         nuevoEmpleado.setAge(30);
         employeeRepository.save(nuevoEmpleado);
         System.out.println(nuevoEmpleado);
@@ -192,6 +192,24 @@ public class RestauranteApplication {
             }
 
             //restaurant != null? restaurant.getId():null
+            //FILTRAR POR CAMPOS
+            // employeeRepository.findByDni("");
+
+             //List<Employee> empleados20 = employeeRepository.findByAge(20);
+
+            //Filtrar por nombre de restaurante
+             List<Employee> empleadosRestaurante = employeeRepository.findByRestaurantName("restaurantColombiano");
+             System.out.println(empleadosRestaurante);
+
+             //Filtrar por edad
+            List<Employee> empleadoEdad = employeeRepository.findByAge(30);
+            System.out.println(empleadoEdad);
+
+             //Filtrar por nombre del empleado
+            List<Employee> empleadoNombre = employeeRepository.findByFirstName("Juan");
+            System.out.println(empleadoNombre);
+
+
         }
     }
 

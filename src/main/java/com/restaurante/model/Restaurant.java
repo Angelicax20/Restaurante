@@ -1,9 +1,13 @@
 package com.restaurante.model;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
-
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 //persistence = BASE DE DATOS
 
@@ -20,11 +24,15 @@ public class Restaurant {
     private  String name;
 
   //  private String address;
-
     @Column(columnDefinition = "BOOLEAN DEFAULT true") //para texto largo ,
     private  Boolean active=true;
     private  Integer numberEmployees;
     private Double price;
+
+    //Fecha de fundacion
+    @CreationTimestamp  // esta anotacion es para que la base genere la fecha, util
+    // para registrar fecha automaticamente sin preocuparse de tener que cambiarla
+    private LocalDate startDateFundacion = LocalDate.now();//valor por defecto a la horal actual
 
     //fecha de apertura, fecha de cierre.(FECHA DE INICIO)
     @CreatedDate
@@ -32,14 +40,13 @@ public class Restaurant {
     private LocalDate startDate = LocalDate.now(); // LocalDate.Now(); valor por la fecha actual
 
     // horario de apertura y cierre.
-
+    //private LocalDateTime ultimaReserva = LocalDateTime.now();
 
     // tipo de comida, etc
     @Enumerated(EnumType.STRING)
     //@Column(name = "food_type") PARA CAMBIAR EL NOMBRRE DE LA TABLA
    // private FoodType foodType = FoodType.COLOMBIAN;
     private FoodType foodType;
-
 
 
     //GETTERS Y SETTERS
@@ -125,5 +132,21 @@ public class Restaurant {
                 ", startDate=" + startDate +
                 ", foodType=" + foodType +
                 '}';
+    }
+//
+//    public LocalDateTime getUltimaReserva() {
+//        return ultimaReserva;
+//    }
+//
+//    public void setUltimaReserva(LocalDateTime ultimaReserva) {
+//        this.ultimaReserva = ultimaReserva;
+//    }
+
+    public LocalDate getStartDateFundacion() {
+        return startDateFundacion;
+    }
+
+    public void setStartDateFundacion(LocalDate startDateFundacion) {
+        this.startDateFundacion = startDateFundacion;
     }
 }
