@@ -1,6 +1,7 @@
 package com.restaurante;
 
 import com.restaurante.model.Employee;
+import com.restaurante.model.FoodType;
 import com.restaurante.model.Restaurant;
 import com.restaurante.repository.EmployeeRepository;
 import com.restaurante.repository.RestaurantRepository;
@@ -123,6 +124,19 @@ public class RestauranteApplication {
         // de consulta findAll,finddByIf,finAllon, count
         // de guardado save,saveAll
         //Para elminar deleteById,deleteAll,delete
+
+        //crear restaurante
+        Restaurant restaurantSpain = new Restaurant();
+        restaurantSpain.setName("Restaurante Español");
+        restaurantSpain.setFoodType(FoodType.SPANISH);
+        restaurantRepository.save(restaurantSpain);
+        System.out.println(restaurantSpain);
+        //restaurante japones
+
+        Restaurant restaurantJapones = new Restaurant();
+        restaurantJapones.setFoodType(FoodType.JAPANESE);
+        restaurantRepository.save(restaurantJapones);
+        System.out.println(restaurantJapones);
     }
 
 }

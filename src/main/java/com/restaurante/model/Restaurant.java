@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class Restaurant {
 // ingresas campos para ver en la base de datos
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)//el identificador se genera solo
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//el identificador se genera solo (el id se genera)
     private  Long id;
 
     @Column(unique = true) //atributo unico
@@ -37,7 +37,9 @@ public class Restaurant {
     // tipo de comida, etc
     @Enumerated(EnumType.STRING)
     //@Column(name = "food_type") PARA CAMBIAR EL NOMBRRE DE LA TABLA
-    private FoodType foodType = FoodType.COLOMBIAN;
+   // private FoodType foodType = FoodType.COLOMBIAN;
+    private FoodType foodType;
+
 
 
     //GETTERS Y SETTERS
