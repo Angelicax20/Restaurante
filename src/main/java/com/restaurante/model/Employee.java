@@ -19,7 +19,11 @@ public class Employee {
     private  String lastName;
     private  Integer age;
 
-//constructor vacio
+    @ManyToOne
+    @JoinColumn
+    private Restaurant restaurant;
+
+    //constructor vacio
     public Employee() {
     }
 //constructor lleno
@@ -29,6 +33,16 @@ public class Employee {
         this.age = age;
     }
 //metodos getters y setters
+
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -69,6 +83,8 @@ public class Employee {
         this.id = id;
     }
 
+
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -77,8 +93,9 @@ public class Employee {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
+                // SI EL RESTAURANTE ES NULL ENTONCES HACE NULL.getId() Y DA ERROR NULL POINTER EXCEPTION
+                ", restaurant=" + (restaurant != null? restaurant.getId():null) +
                 '}';
     }
-
-    //TODO [Reverse Engineering] generate columns from DB
+//TODO [Reverse Engineering] generate columns from DB
 }

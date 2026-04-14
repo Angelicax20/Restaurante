@@ -8,6 +8,7 @@ import com.restaurante.repository.RestaurantRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,13 +25,13 @@ public class RestauranteApplication {
         //restaurantRepository.
         //guardar el restaurante en base de dato usando el repositorio : save()
 
-        Restaurant pacoBar = new Restaurant("nombre1",23.54,23); //meter objeto a base de dato
+        Restaurant pacoBar = new Restaurant("Restaurante 1",23.54,23); //meter objeto a base de dato
 //        pacoBar.setName("Paco Bar");
 //        pacoBar.setAddress("Calle 123");
 //        pacoBar.setPrice(25.50);
 //        pacoBar.setNumberEmployees(10);
 
-        Restaurant bar2 = new Restaurant("nombre2", 23.54,23); //meter objeto a base de dato
+        Restaurant bar2 = new Restaurant("Restaurante 2", 23.54,23); //meter objeto a base de dato
         Restaurant bar3 = new Restaurant();
 
         restaurantRepository.save(pacoBar);//para guardar o insertar en la BD
@@ -104,7 +105,6 @@ public class RestauranteApplication {
         //delete
         restaurantRepository.delete(r1);
 
-
         //findById
 
      //long resta =  restaurantRepository.findById(1);
@@ -137,6 +137,62 @@ public class RestauranteApplication {
         restaurantJapones.setFoodType(FoodType.JAPANESE);
         restaurantRepository.save(restaurantJapones);
         System.out.println(restaurantJapones);
+
+        //Probar Fecha de startDate del restaurante
+        Restaurant smashBurger = new Restaurant();
+        smashBurger.setName("Smash Burger");
+        smashBurger.setNumberEmployees(15);
+        smashBurger.setFoodType(FoodType.COLOMBIAN);
+        smashBurger.setStartDate(LocalDate.now()); // Establecer la fecha de apertura como la fecha actual CON STARDATE
+        restaurantRepository.save(smashBurger);
+        System.out.println(smashBurger);
+
+        //Fecha futura
+        Restaurant madridFood = new Restaurant();
+        madridFood.setName("Madrid Food");
+        madridFood.setStartDate(LocalDate.of(2026, 6, 1)); // Establecer la fecha de apertura como una fecha futura
+        restaurantRepository.save(madridFood);
+        System.out.println(madridFood);
+
+        //MANY TO ONE - ASOCIAR 1 RESTAURANTE A DOS EMPLEADOS
+        //crear restaurante
+        Restaurant restaurantColombiano = new Restaurant();
+        restaurantColombiano.setName("Restaurante Colombiano");
+        restaurantColombiano.setFoodType(FoodType.COLOMBIAN);
+        restaurantRepository.save(restaurantColombiano);
+
+
+        //crear 1 empleado
+        Employee nuevoEmpleado = new Employee();
+        nuevoEmpleado.setRestaurant(restaurantColombiano); // Asociar el empleado al restaurante colombiano
+        nuevoEmpleado.setFirstName("Juan");
+        nuevoEmpleado.setLastName("Perez");
+        nuevoEmpleado.setAge(30);
+        employeeRepository.save(nuevoEmpleado);
+        System.out.println(nuevoEmpleado);
+
+        //crear 2 empleado
+
+        Employee nuevoEmpleado2 = new Employee();
+        nuevoEmpleado2.setRestaurant(restaurantColombiano);
+        //nuevoEmpleado2.setRestaurant(madridFood);
+        nuevoEmpleado2.setFirstName("Maria");
+        nuevoEmpleado2.setLastName("Gomez");
+        nuevoEmpleado2.setAge(28);
+        employeeRepository.save(nuevoEmpleado2);
+        System.out.println(nuevoEmpleado2);
+
+        //bucle for para iterar sobre todos los empleados imprimiendo el nombre del empleado si lo tiene
+        for (Employee e : employeeRepository.findAll()) {//llamamod la lista de empleados
+            System.out.println("Empleado: " + e.getFirstName() + " " + e.getLastName());
+             if (e.getRestaurant() != null) {
+                System.out.println("Trabaja en el restaurante: " + e.getRestaurant().getName());
+            } else {
+                System.out.println("No tiene restaurante asignado.");
+            }
+
+            //restaurant != null? restaurant.getId():null
+        }
     }
 
 }
