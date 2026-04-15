@@ -2,6 +2,7 @@ package com.restaurante.repository;
 
 
 import com.restaurante.model.Employee;
+import com.restaurante.model.FoodType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -20,6 +21,11 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     List<Employee> findByFirstName(String firstName);
 
+    List<Employee> findByAgeGreaterThanEqual(Integer age);
+
+    List<Employee> findByAgeLessThanEqual(Integer age);
+
+    List<Employee> findByRestaurant_FoodType (FoodType foodType);
 
     // añadir consultas personalizadas
 }

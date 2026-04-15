@@ -192,6 +192,7 @@ public class RestauranteApplication {
             }
 
             //restaurant != null? restaurant.getId():null
+
             //FILTRAR POR CAMPOS
             // employeeRepository.findByDni("");
 
@@ -208,6 +209,14 @@ public class RestauranteApplication {
              //Filtrar por nombre del empleado
             List<Employee> empleadoNombre = employeeRepository.findByFirstName("Juan");
             System.out.println(empleadoNombre);
+
+            System.out.println("FILTAR EMPLEADOS POR TIPO DE COMIDA DE RESTAURANTE");
+            for (var empleado : employeeRepository.findByRestaurant_FoodType(FoodType.COLOMBIAN))
+            System.out.println(empleado);
+
+            System.out.println("FILTAR EMPLEADOS POR EDAD MAYOR O IGUAL QUE");
+            for (var empleado : employeeRepository.findByAgeGreaterThanEqual(20))
+                System.out.println(empleado);
 
 
         }
